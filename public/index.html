@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC</title>
+  </head>
+
+  <body>
+    <div id="room-selection-container" class="centered">
+      <h1>Plataforma de videoconferencia WebRTC</h1>
+      <label>Adicione o nome da sala</label>
+      <input id="room-input" type="text" />
+      <button id="connect-button">CONECTAR</button>
+    </div>
+
+    <div id="video-chat-container" class="video-position">
+      <video id="local-video" autoplay muted></video>
+      <p id="video-resolution">Resolução: Aguardando informações...</p>
+      <!-- <button id="start-recording-button">Iniciar Gravação</button>
+      <button id="stop-recording-button">Parar Gravação</button> -->
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="client.js"></script>
+  </body>
+</html>

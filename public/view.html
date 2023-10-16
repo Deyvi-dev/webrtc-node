@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+      }
+
+      #video-chat-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="room-selection-container" class="centered">
+      <h1>Sua transmissão já irá começar... se demorar, recarregue a página</h1>
+    
+      <input hidden id="room-input" type="text" />
+      <button hidden id="connect-button">CONNECT</button>
+    </div>
+
+    <div id="video-chat-container" class="video-position">
+   
+    </div>
+
+    <script>
+      // Função para obter o valor do parâmetro "id" da URL
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      }
+
+      // Obter o valor do parâmetro "id" da URL
+      const idFromURL = getUrlParameter('id');
+
+      // Preencher o campo de entrada com o valor do parâmetro "id"
+      document.getElementById('room-input').value = idFromURL;
+
+      // Clicar automaticamente no botão após preencher o campo de entrada com um pequeno atraso
+      setTimeout(function() {
+        document.getElementById('connect-button').click();
+      }, 100); // 100 milissegundos (ajuste conforme necessário)
+    </script>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="view.js"></script>
+  </body>
+</html>
